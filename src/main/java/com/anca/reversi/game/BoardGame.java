@@ -90,8 +90,8 @@ public class BoardGame {
 		byte vty = (byte) (y + addy);
 		while (matrix.get(vtx).get(vty) != gameplayer) {
 			matrix.get(vtx).set(vty, gameplayer);
-			vtx = (byte) (x + addx);
-			vty = (byte) (y + addy);
+			vtx += addx;
+			vty += addy;
 		}
 		return matrix;
 	}
@@ -174,7 +174,7 @@ public class BoardGame {
 		for (int i = 0; i < 8; i++) {
 			builder.append(count).append(" ");
 			for (int j = 0; j < 8; j++) {
-				if (this.matrix.get(i).get(j) == 0)
+				if (this.matrix.get(i).get(j) == -1)
 					builder.append("-");
 				else
 					builder.append(this.matrix.get(i).get(j).toString());
